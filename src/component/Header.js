@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <div className="storeTitle">
         <h1>Store</h1>
-        <img src={cartImage} alt={cartImage} />
+        <img className="cartImage" src={cartImage} alt="cartImage" />
       </div>
     );
   }
