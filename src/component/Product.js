@@ -6,7 +6,8 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mytext: [],
+      iPhone: [],
+      huaWei: [],
     };
   }
 
@@ -19,7 +20,8 @@ class Product extends Component {
         console.log(data);
         data.map((key) => {
           this.setState({
-            mytext: [...this.state.mytext, key],
+            iPhone: [...this.state.iPhone, key.category === 'iPhone' && key],
+            huaWei: [...this.state.huaWei, key.category === 'HUAWEI' && key],
           });
         });
       });
@@ -31,20 +33,39 @@ class Product extends Component {
 
   showProducts() {
     return (
-      <div>
+      <div className="products">
         <ul>
-          {this.state.mytext.map((key, index) => {
-            return (
-              <li key={index}>
-                <h3>{key.name}</h3>
-                <img
-                  className="productImage"
-                  src={productImage}
-                  alt="productImage"
-                />
-                <p>{key.price}</p>
-              </li>
-            );
+          <h2>iPhone</h2>
+          {this.state.iPhone.map((key, index) => {
+            if (key !== false) {
+              return (
+                <li key={index}>
+                  <h3>{key.name}</h3>
+                  <img
+                    className="productImage"
+                    src={productImage}
+                    alt="productImage"
+                  />
+                  <p>{key.price}</p>
+                </li>
+              );
+            }
+          })}
+          <h2>HUAWEI</h2>
+          {this.state.huaWei.map((key, index) => {
+            if (key !== false) {
+              return (
+                <li key={index}>
+                  <h3>{key.name}</h3>
+                  <img
+                    className="productImage"
+                    src={productImage}
+                    alt="productImage"
+                  />
+                  <p>{key.price}</p>
+                </li>
+              );
+            }
           })}
         </ul>
       </div>
