@@ -1,0 +1,19 @@
+@import 'variables';
+
+img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 67%;
+  top: 95px;
+}
+
+h1 {
+  padding: 10px 0 10px 20px;
+  color: $white;
+}
+
+.storeTitle {
+  height: 60px;
+  background:$support-blue;
+}
