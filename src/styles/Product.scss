@@ -26,16 +26,18 @@ h2 {
 }
 
 .cartNum {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 20px;
   text-align: center;
+  padding-top: 3px;
+  font-style: italic;
   position: absolute;
-  left: 68.5%;
-  top: 95px;
-  font-size: 20px;
+  left: 68%;
+  top: 98px;
+  font-size: 15px;
   color: $white;
   background: $support-red;
-  border-radius: 50%;
+  border-radius: 40%;
 }
 
 button {
