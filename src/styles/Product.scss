@@ -26,10 +26,29 @@ h2 {
 }
 
 .cartNum {
+  width: 25px;
+  height: 25px;
+  text-align: center;
   position: absolute;
   left: 68.5%;
   top: 95px;
   font-size: 20px;
   color: $white;
   background: $support-red;
+  border-radius: 50%;
+}
+
+button {
+  background:$support-blue;
+  width: 100px;
+  height: 25px;
+  color: $white;
+  text-align: center;
+  border: none;
+
+}
+
+button:focus {
+  outline: none;
+  background:$second-blue;
 }
