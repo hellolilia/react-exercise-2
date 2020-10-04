@@ -19,10 +19,15 @@ class Product extends Component {
       .then((data) => {
         console.log(data);
         data.map((key) => {
-          this.setState({
-            iPhone: [...this.state.iPhone, key.category === 'iPhone' && key],
-            huaWei: [...this.state.huaWei, key.category === 'HUAWEI' && key],
-          });
+          if (key.category === 'iPhone') {
+            this.setState({
+              iPhone: [...this.state.iPhone, key],
+            });
+          } else {
+            this.setState({
+              huaWei: [...this.state.huaWei, key],
+            });
+          }
         });
       });
   }
@@ -31,41 +36,30 @@ class Product extends Component {
     this.getData();
   }
 
-  showProducts() {
+  getProductCategory(product) {
+    let products = product.map((key) => {
+      return key.category;
+    });
+    return products[0];
+  }
+
+  showProducts(product) {
     return (
-      <div className="products">
+      <div>
+        <h2>{this.getProductCategory(product)}</h2>
         <ul>
-          <h2>iPhone</h2>
-          {this.state.iPhone.map((key, index) => {
-            if (key !== false) {
-              return (
-                <li key={index}>
-                  <h3>{key.name}</h3>
-                  <img
-                    className="productImage"
-                    src={productImage}
-                    alt="productImage"
-                  />
-                  <p>{key.price}</p>
-                </li>
-              );
-            }
-          })}
-          <h2>HUAWEI</h2>
-          {this.state.huaWei.map((key, index) => {
-            if (key !== false) {
-              return (
-                <li key={index}>
-                  <h3>{key.name}</h3>
-                  <img
-                    className="productImage"
-                    src={productImage}
-                    alt="productImage"
-                  />
-                  <p>{key.price}</p>
-                </li>
-              );
-            }
+          {product.map((key, index) => {
+            return (
+              <li key={index}>
+                <h3>{key.name}</h3>
+                <img
+                  className="productImage"
+                  src={productImage}
+                  alt="productImage"
+                />
+                <p>{key.price}</p>
+              </li>
+            );
           })}
         </ul>
       </div>
@@ -73,7 +67,12 @@ class Product extends Component {
   }
 
   render() {
-    return this.showProducts();
+    return (
+      <div className="products">
+        {this.showProducts(this.state.iPhone)}
+        {this.showProducts(this.state.huaWei)}
+      </div>
+    );
   }
 }
 
