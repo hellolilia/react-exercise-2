@@ -24,3 +24,12 @@ h2 {
 .products {
   padding-bottom: 50px;
 }
+
+.cartNum {
+  position: absolute;
+  left: 68.5%;
+  top: 95px;
+  font-size: 20px;
+  color: $white;
+  background: $support-red;
+}

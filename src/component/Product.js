@@ -8,6 +8,7 @@ class Product extends Component {
     this.state = {
       iPhone: [],
       huaWei: [],
+      cart: 0,
     };
   }
 
@@ -43,6 +44,12 @@ class Product extends Component {
     return products[0];
   }
 
+  addCartNum = () => {
+    this.setState({
+      cart: this.state.cart + 1,
+    });
+  };
+
   showProducts(product) {
     return (
       <div>
@@ -57,7 +64,12 @@ class Product extends Component {
                   src={productImage}
                   alt="productImage"
                 />
-                <p>{key.price}</p>
+                <p>
+                  {key.price}{' '}
+                  <button type="button" onClick={this.addCartNum}>
+                    add to cart
+                  </button>
+                </p>
               </li>
             );
           })}
@@ -69,6 +81,7 @@ class Product extends Component {
   render() {
     return (
       <div className="products">
+        <p className="cartNum">{this.state.cart}</p>
         {this.showProducts(this.state.iPhone)}
         {this.showProducts(this.state.huaWei)}
       </div>
